@@ -30,6 +30,7 @@ a:hover {
     grid-template-areas:
         "header header header"
         "sidebar main content"
+        "signup signup signup"
         "footer footer footer";
     grid-gap: 10px;
     min-height: 100vh;
@@ -146,11 +147,24 @@ aside {
     padding: 0;
   }
 
+/* Signup styles */
+.signup {
+    grid-area: signup;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #666;
+    
+    height: 40px;
+    padding: 10px 0 0 0;
+}
+
 /* Footer styles */
 footer {
     grid-area: footer;
     display: grid;
-    grid-template-columns: inherit;
+    grid-template-columns: 0.2fr 2fr 0.2fr;
     grid-template-areas:
         "footer-left footer-main footer-right";
     grid-gap: 10px;
@@ -201,18 +215,42 @@ footer a {
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
-        .container {
+    .container {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-template-areas:
             "header"
+            "signup"
             "sidebar"
             "main"
             "content"
             "footer";
-        }
-
-        .footer {
-            
-        }
     }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr 2fr 0.1fr 0.1fr;
+        grid-template-areas:
+            "header header"
+            "main main"
+            "signup sidebar"
+            "content footer";
+    }
+
+    .sidebar {
+        height: 40px;
+        padding: 10px 0 0 0;
+    }
+
+    aside {
+        height: 40px;
+        padding: 10px 0 0 0;
+    }
+
+    footer {
+        position: relative;
+        bottom: inherit;
+    }
+}
